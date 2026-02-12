@@ -61,6 +61,7 @@ const home = () => {
 
   useEffect(() => {
     const serverData = async () => {
+      console.log(`${process.env.NEXT_PUBLIC_API_URL}/home`);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home`, {
         method: "GET",
         credentials: "include",
