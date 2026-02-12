@@ -58,6 +58,18 @@ const home = () => {
           : post
       ))
   }
+useEffect(() => {
+  const checkAuth = async () => {
+    const res = await fetch(`${API_URL}/home`, {
+      credentials: "include"
+    });
+
+    if (res.status === 401) {
+      router.push("/login");
+    }
+  };
+  checkAuth();
+}, []);
 
   useEffect(() => {
     const serverData = async () => {
