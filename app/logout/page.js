@@ -2,18 +2,6 @@
 import React, { useEffect } from 'react'
 
 const logout = () => {
-  useEffect(() => {
-    const checkAuth = async () => {
-      const res = await fetch(`${API_URL}/home`, {
-        credentials: "include"
-      });
-  
-      if (res.status === 401) {
-        window.location.href="/login";
-      }
-    };
-    checkAuth();
-  }, []);
     useEffect(() => {
     HandleApi();
     }, [])

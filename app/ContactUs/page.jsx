@@ -1,19 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "@/app/components/navbar"
 const ContactUs = () => {
-  useEffect(() => {
-    const checkAuth = async () => {
-      const res = await fetch(`${API_URL}/home`, {
-        credentials: "include"
-      });
-  
-      if (res.status === 401) {
-        window.location.href="/login";
-      }
-    };
-    checkAuth();
-  }, []);
+
   return (
     <>
     <Navbar/>

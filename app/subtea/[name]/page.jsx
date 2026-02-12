@@ -29,18 +29,7 @@ const SubteaPage = () => {
           : post
       ))
   }
-useEffect(() => {
-  const checkAuth = async () => {
-    const res = await fetch(`${API_URL}/home`, {
-      credentials: "include"
-    });
 
-    if (res.status === 401) {
-      window.location.href="/login";
-    }
-  };
-  checkAuth();
-}, []);
   useEffect(() => {
     if (!name) return;
 

@@ -15,18 +15,7 @@ const page = () => {
     });
     window.location.href="/home";
     }
-    useEffect(() => {
-      const checkAuth = async () => {
-        const res = await fetch(`${API_URL}/home`, {
-          credentials: "include"
-        });
-    
-        if (res.status === 401) {
-          window.location.href="/login";
-        }
-      };
-      checkAuth();
-    }, []);
+
   return (
     <><div className='bg-zinc-900 h-screen min-w-full p-10'>
       <form onSubmit={()=> {updatePosts(postId)}}>
