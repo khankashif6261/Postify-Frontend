@@ -103,7 +103,7 @@ const Profile = () => {
               </Link>
             </div>
           </div>
-          <div className="flex justify-end w-[620px]">
+          <div className="flex justify-end w-[550px]">
             <Link href={`/logout`}>
               <button className="bg-red-400 cursor-pointer text-white px-4 py-2 rounded-full">Logout</button>
             </Link>
