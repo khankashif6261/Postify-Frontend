@@ -140,7 +140,7 @@ useEffect(() => {
               >
 
                 <h3 className="px-4 pt-3 text-sm text-blue-500 font-medium truncate">
-                  @{post.user.name}|| Anonymous
+                  @{post.user.name || "Anonymous"}
                 </h3>
 
                 {post.mediaType === "image" && (
