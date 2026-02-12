@@ -36,6 +36,18 @@ const rePostFetching = async () => {
     const data = await res.json();
     setPosts(data);
   }
+  useEffect(() => {
+    const checkAuth = async () => {
+      const res = await fetch(`${API_URL}/home`, {
+        credentials: "include"
+      });
+  
+      if (res.status === 401) {
+        window.location.href="/login";
+      }
+    };
+    checkAuth();
+  }, []);
 useEffect(()  => {
   const fetchusername = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/profile`, {

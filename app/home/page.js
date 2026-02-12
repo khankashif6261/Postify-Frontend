@@ -65,7 +65,7 @@ useEffect(() => {
     });
 
     if (res.status === 401) {
-      router.push("/login");
+      window.location.href="/login";
     }
   };
   checkAuth();

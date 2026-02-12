@@ -10,6 +10,18 @@ const Profile = () => {
     avatar: "/avatar.svg", // replace with your hood avatar if posts exist, map here
   };
   useEffect(() => {
+    const checkAuth = async () => {
+      const res = await fetch(`${API_URL}/home`, {
+        credentials: "include"
+      });
+  
+      if (res.status === 401) {
+        window.location.href="/login";
+      }
+    };
+    checkAuth();
+  }, []);
+  useEffect(() => {
     const postFetching = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-posts`, {
         method: "GET",
