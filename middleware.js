@@ -1,3 +1,4 @@
+"use client"
 import { NextResponse } from "next/server";
 import React, { useEffect, useState } from "react";
 export default function MiddlewareJs (req) {
