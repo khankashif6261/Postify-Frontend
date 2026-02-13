@@ -179,7 +179,7 @@ useEffect(() => {
                       src="https://images.vexels.com/media/users/3/223247/isolated/preview/32bfd7335b2e334bff40b97de9061096-like-social-media-icon.png"
                     />
                     <span className="text-sm text-gray-600">
-                      {post.likes?.length || 0}k
+                      {post.likes.length}k
                     </span>
                   </div>
 
