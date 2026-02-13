@@ -100,6 +100,7 @@ const Register = () => {
                 type="text"
                 onChange={handleName}
                 name='name'
+                required
                 placeholder='Name'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />
@@ -108,6 +109,7 @@ const Register = () => {
                 type="email"
                 onChange={handlemail}
                 name='mail'
+                required
                 placeholder='Email'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />
@@ -116,6 +118,7 @@ const Register = () => {
                 type="password"
                 onChange={handlepassword}
                 name='pass'
+                required
                 placeholder='Password'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />
@@ -124,6 +127,7 @@ const Register = () => {
                 type="password"
                 onChange={handlepassword2}
                 name='pass2'
+                required
                 placeholder='Confirm Password'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />

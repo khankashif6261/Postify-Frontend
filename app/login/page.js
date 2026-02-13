@@ -86,6 +86,7 @@ const Login = () => {
                 type="text"
                 onChange={handleName}
                 name='name'
+                required
                 placeholder='Name'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />
@@ -94,6 +95,7 @@ const Login = () => {
                 type="password"
                 onChange={handlepassword}
                 name='pass'
+                required
                 placeholder='Password'
                 className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
               />
