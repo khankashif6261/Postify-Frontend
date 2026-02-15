@@ -3,11 +3,17 @@ import { NextResponse } from "next/server"
 export default function MiddlewareJs(req) {
     const token = req.cookies.get("token").value;
     console.log(token);
-    if(!token) {
+    try {
+        if(!token) {
         return NextResponse.redirect(new URL("/login", req.url))
     }
     else {
         return NextResponse.next();
+    }
+    }
+    catch(err) {
+        console.log("Error from catch is: ", err);
+        NextResponse.redirect(new URL("/login",req.url));
     }
 }
 export const config = 
