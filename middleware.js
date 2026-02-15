@@ -1,22 +1,38 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 export function middleware(req) {
-    const token = req.cookies.get("token").value;
-    console.log(token);
-    try {
-        if(token) {
-        return NextResponse.next();
+  try {
+    const token = req.cookies.get("token")?.value;
+
+    console.log("Token:", token);
+
+    // If token missing → redirect
+    if (!token) {
+      return NextResponse.redirect(
+        new URL("/login", req.url)
+      );
     }
-    else {
-        return NextResponse.redirect(new URL("/login", req.url));
-    }
-    }
-    catch(err) {
-        console.log("Error from catch is: ", err);
-        return NextResponse.redirect(new URL("/login",req.url));
-    }
+
+    // Token exists → allow
+    return NextResponse.next();
+
+  } catch (err) {
+    console.log("Middleware crash:", err);
+
+    return NextResponse.redirect(
+      new URL("/login", req.url)
+    );
+  }
 }
-export const config = 
-{
-    matcher: ["/home/:path*", "/explore/:path*", "/subtea/:name/:path*", "/edit/:path*","/AboutUs/:path*", "/ContactUs/:path*", "/profile/:path*"],
-}
+
+export const config = {
+  matcher: [
+    "/home/:path*",
+    "/explore/:path*",
+    "/subtea/:path*",
+    "/edit/:path*",
+    "/AboutUs/:path*",
+    "/ContactUs/:path*",
+    "/profile/:path*",
+  ],
+};
