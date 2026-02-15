@@ -4,11 +4,11 @@ export default function MiddlewareJs(req) {
     const token = req.cookies.get("token").value;
     console.log(token);
     try {
-        if(!token) {
-        return NextResponse.redirect(new URL("/login", req.url))
+        if(token) {
+        return NextResponse.next();
     }
     else {
-        return NextResponse.next();
+        return NextResponse.redirect(new URL("/login", req.url));
     }
     }
     catch(err) {
