@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export function middleware(req) {
   try {
     const token = req.cookies.get("token")?.value;
-
+    console.log(req.cookies);
     console.log("Token:", token);
 
     // If token missing → redirect
