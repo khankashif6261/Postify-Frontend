@@ -14,13 +14,18 @@ const createPost = async (e) => {
     const formData = new FormData();
     formData.append("content", content);
     formData.append("subtea", subtea);
+    formData.append("file", file);
+    formData.append("upload_preset", "uploads_for_postify");
+    formData.append("cloud_name", "dxnf3rc9z");
     if (file) formData.append("media", file);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/create`, {
+    if (!file) return;
+    const res = await fetch(`POST https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload`, {
       method: "POST",
       credentials: "include",
       body: formData,
     });
     const data = await res.json();
+    console.log(data);
     setpostdata(data.content);
     rePostFetching();
     setcontent("");
