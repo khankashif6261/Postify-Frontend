@@ -9,17 +9,26 @@ export default function createPost() {
   const [username, setusername] = useState("")
   const [posts, setPosts] = useState([]);
 
+  const HandleUpload = (event) => {
+    const file = event.target.files[0];
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "uploads_for_postify");
+    data.append("cloud_name", "dxnf3rc9z");
+    const res = fetch("https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload", {
+      method: "POST",
+      credentials: "include",
+      body: data
+    })
+  }
 const createPost = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("content", content);
     formData.append("subtea", subtea);
-    formData.append("file", file);
-    formData.append("upload_preset", "uploads_for_postify");
-    formData.append("cloud_name", "dxnf3rc9z");
     if (file) formData.append("media", file);
     if (!file) return;
-    const res = await fetch(`POST https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload`, {
+    const res = await fetch(`https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload`, {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -125,7 +134,7 @@ fetchusername();
               <input
                 type="file"
                 hidden
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={HandleUpload}
               />
               📷 Photo/Video
             </label>
