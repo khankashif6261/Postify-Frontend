@@ -8,13 +8,10 @@ const ContactUs = () => {
     <Navbar/>
     <div className="min-h-screen bg-linear-to-br from-[#f8fbfa] via-white to-[#eef7f4] relative overflow-hidden">
 
-      {/* Background Waves */}
       <div className="absolute bottom-0 left-0 w-full h-72 bg-linear-to-r from-[#cfe9e2] to-[#e6f4f1] rounded-t-[100%] opacity-60 blur-2xl"></div>
 
-      {/* Container */}
       <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
 
-        {/* Heading */}
         <div className="mb-14">
           <h1 className="text-5xl font-bold text-gray-800">
             Contact <span className="text-[#3aa58a]">Us</span>
@@ -25,13 +22,10 @@ const ContactUs = () => {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid md:grid-cols-2 gap-10">
 
-          {/* LEFT INFO CARDS */}
           <div className="space-y-6">
 
-            {/* Email */}
             <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center gap-4">
               <div className="w-14 h-14 bg-[#e6f4f1] rounded-full flex items-center justify-center text-2xl">
                 ✉️
@@ -44,7 +38,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Call */}
             <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center gap-4">
               <div className="w-14 h-14 bg-[#e6f4f1] rounded-full flex items-center justify-center text-2xl">
                 📞
@@ -57,7 +50,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Address */}
             <div className="bg-white shadow-lg rounded-2xl p-6 flex items-center gap-4">
               <div className="w-14 h-14 bg-[#e6f4f1] rounded-full flex items-center justify-center text-2xl">
                 📍
@@ -75,7 +67,6 @@ const ContactUs = () => {
 
           </div>
 
-          {/* RIGHT FORM */}
           <div className="bg-white/70 backdrop-blur-xl shadow-xl rounded-3xl p-8">
 
             <form className="space-y-5">

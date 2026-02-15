@@ -52,7 +52,6 @@ const SubteaPage = () => {
     <>
       <Navbar />
 
-      {/* BACK BUTTON */}
       <Link href={`/explore`}>
         <div className="px-4 sm:px-6">
           <button className="bg-[#3ab299] px-4 py-2 text-white rounded-full cursor-pointer mt-3">
@@ -61,7 +60,6 @@ const SubteaPage = () => {
         </div>
       </Link>
 
-      {/* HEADER */}
       <div className="bg-[url('/bg-subtea.png')] bg-cover bg-center mx-4 sm:mx-6 my-3 rounded-3xl p-5 sm:p-6">
         <h1 className="text-xl sm:text-2xl font-bold capitalize mb-1">
           {name}
@@ -69,10 +67,8 @@ const SubteaPage = () => {
         <span>r/{name}</span>
       </div>
 
-      {/* MAIN LAYOUT */}
       <div className="flex flex-col lg:flex-row gap-6 p-3 sm:p-6 bg-[#ececec]">
 
-        {/* POSTS */}
         <div className="space-y-4 w-full lg:w-[70%]">
           {[...posts].reverse().map((post) => (
 
@@ -97,7 +93,6 @@ const SubteaPage = () => {
                 </span>
               </div>
 
-              {/* IMAGE */}
               {post.mediaType === 'image' && (
                 <div className="w-full max-w-[260px] h-[360px] sm:h-[460px] rounded-2xl overflow-hidden flex items-center justify-center mx-auto">
                   <img
@@ -107,7 +102,6 @@ const SubteaPage = () => {
                 </div>
               )}
 
-              {/* VIDEO */}
               {post.mediaType === "video" && (
                 <div className="w-full max-w-[260px] h-[360px] sm:h-[460px] rounded-2xl overflow-hidden flex items-center justify-center mx-auto">
                   <video
@@ -139,7 +133,6 @@ const SubteaPage = () => {
           ))}
         </div>
 
-        {/* SIDEBAR */}
         <div className="border rounded-2xl text-center p-3 h-auto lg:h-[600px] w-full lg:w-[350px] bg-white">
 
           <h1 className="font-semibold mt-3">About Postify</h1>

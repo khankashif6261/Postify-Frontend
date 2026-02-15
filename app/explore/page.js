@@ -11,7 +11,6 @@ const Explore = () => {
 
       <div className="min-h-screen bg-[#f7f7f7] px-6 lg:px-16 py-10">
 
-        {/* 🔍 Hero + Search */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
           <div>
@@ -23,7 +22,6 @@ const Explore = () => {
             </p>
           </div>
 
-          {/* Search */}
           <div className="flex w-full lg:w-[500px]">
             <input
               type="text"
@@ -36,7 +34,6 @@ const Explore = () => {
           </div>
         </div>
 
-        {/* 🔥 Trending */}
         <section className="mt-12">
           <h2 className="text-xl font-semibold mb-6">
             Trending Subteas
@@ -44,7 +41,6 @@ const Explore = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
 
-            {/* Card 1 */}
             <Link href={`/subtea/teaspills`}>
               <div className="bg-linear-to-r from-blue-100 to-blue-50 border rounded-xl p-5 flex items-center justify-between">
                 <div className="flex gap-4 items-center">
@@ -66,7 +62,6 @@ const Explore = () => {
               </div>
             </Link>
             <Link href={`/subtea/bollyGossips`}>
-              {/* Card 2 */}
               <div className="bg-linear-to-r from-pink-100 to-pink-50 border rounded-xl p-5 flex items-center justify-between">
                 <div className="flex gap-4 items-center">
                   <img
@@ -89,7 +84,6 @@ const Explore = () => {
               </div>
             </Link>
             <Link href={`subtea/3amthoughts`}>
-              {/* Card 3 */}
               <div className="bg-linear-to-r from-rose-100 to-rose-50 border rounded-xl p-5 flex items-center justify-between">
                 <div className="flex gap-4 items-center">
                   <img
@@ -113,7 +107,6 @@ const Explore = () => {
             </Link>
           </div>
         </section>
-        {/* 🆕 New Subteas */}
         <section className="mt-12">
           <h2 className="text-xl font-semibold mb-6">
             New Subteas
@@ -121,7 +114,6 @@ const Explore = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
 
-            {/* Horror */}
             <Link href={`/subtea/horrorstories`}>
             <div className="bg-linear-to-r cursor-pointer from-amber-50 to-amber-100 border rounded-xl p-5 flex items-center justify-between">
               <div className="flex gap-4 items-center">
@@ -144,7 +136,6 @@ const Explore = () => {
               </button>
             </div>
             </Link>
-            {/* Askpostify */}
             <Link href={`/subtea/askpostify`}>
             <div className="bg-linear-to-r from-emerald-50 to-emerald-100 border rounded-xl p-5 flex items-center justify-between">
               <div className="flex gap-4 items-center">
@@ -170,7 +161,6 @@ const Explore = () => {
           </div>
         </section>
 
-        {/* 📂 Categories */}
         <section className="mt-12">
           <h2 className="text-xl font-semibold mb-6">
             Browse Categories

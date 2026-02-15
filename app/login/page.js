@@ -47,7 +47,6 @@ const Login = () => {
 
       <div className='main bg-[#3ab299] flex flex-col lg:flex-row justify-between w-full max-w-5xl rounded-3xl overflow-hidden'>
 
-        {/* LEFT PANEL */}
         <div className='flex flex-col justify-center items-center text-center p-8 lg:w-[40%]'>
 
           <h1 className='text-white text-3xl sm:text-4xl font-bold'>
@@ -69,7 +68,6 @@ const Login = () => {
 
         </div>
 
-        {/* RIGHT PANEL */}
         <div className='bg-white w-full min-h-120 lg:w-[60%] p-6 sm:p-10'>
 
           <h1 className='text-[#3ab299] font-bold text-2xl sm:text-4xl text-center mt-6 sm:mt-10'>
