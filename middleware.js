@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export default function MiddlewareJs(req) {
+export function MiddlewareJs(req) {
     const token = req.cookies.get("token").value;
     console.log(token);
     try {
@@ -13,10 +13,10 @@ export default function MiddlewareJs(req) {
     }
     catch(err) {
         console.log("Error from catch is: ", err);
-        NextResponse.redirect(new URL("/login",req.url));
+        return NextResponse.redirect(new URL("/login",req.url));
     }
 }
 export const config = 
 {
-    matcher: ["/home/:path*", "/expore/:path*", "/subtea/:name/:path*", "/edit/:path*","/AboutUs/:path*", "/ContactUs/:path*", "/profile/:path*"],
+    matcher: ["/home/:path*", "/explore/:path*", "/subtea/:name/:path*", "/edit/:path*","/AboutUs/:path*", "/ContactUs/:path*", "/profile/:path*"],
 }
