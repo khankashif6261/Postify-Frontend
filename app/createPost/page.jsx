@@ -9,17 +9,19 @@ export default function createPost() {
   const [username, setusername] = useState("")
   const [posts, setPosts] = useState([]);
 
-  const HandleUpload = (event) => {
+  const HandleUpload = async (event) => {
     const file = event.target.files[0];
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "uploads_for_postify");
     data.append("cloud_name", "dxnf3rc9z");
-    const res = fetch("https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload", {
+    const res = await fetch("https://api.cloudinary.com/v1_1/dxnf3rc9z/image/upload", {
       method: "POST",
       credentials: "include",
       body: data
     })
+    const uploadedImage = await res.json();
+    console.log(uploadedImage)
   }
 const createPost = async (e) => {
     e.preventDefault();
