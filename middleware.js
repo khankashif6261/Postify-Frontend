@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 export default function middleware(req) {
-    const token = req.cookies.get("token").value;
+    const token = req.cookies.get("token")?.value;
     console.log(token);
     try {
         if(!token) {
@@ -18,5 +18,5 @@ export default function middleware(req) {
 }
 export const config = 
 {
-    matcher: ["/home/:path", "/expore/:path", "/subtea/:name/:path", "/edit/:path","/AboutUs/:path", "/ContactUs/:path", "/profile/:path"],
+    matcher: ["/home/:path*", "/expore/:path*", "/subtea/:name/:path*", "/edit/:path*","/AboutUs/:path*", "/ContactUs/:path*", "/profile/:path*"],
 }
