@@ -31,5 +31,5 @@ export default function MiddlewareJs (req) {
 }
 export const config = 
 {
-    matcher: ["/home/:path*", "/explore/:path*", "/subtea/:name/:path*", "/edit/:path*","/AboutUs/:path*", "/ContactUs/:path*", "/profile/:path*"],
+    matcher: ["/home/:path", "/explore/:path", "/subtea/:name/:path", "/edit/:path","/AboutUs/:path", "/ContactUs/:path", "/profile/:path"],
 }
