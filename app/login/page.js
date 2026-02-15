@@ -1,8 +1,10 @@
 "use client"
 import React, { useState } from 'react'
+import FullScreenLoader from '../components/FullScreenLoader';
 const Login = () => {
 
   const [name, setname] = useState("");
+  const [loading, setloading] = useState(false)
   const [pass, setpass] = useState("")
 
   const handleName = (event) => {
@@ -19,7 +21,9 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setloading(true);
     console.log(`${process.env.NEXT_PUBLIC_API_URL}/login`);
+    try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,13 +40,19 @@ const Login = () => {
       let pass_error = document.querySelector("#pass-error");
       pass_error.textContent = "either username or password is wrong";
     }
-
+    }
+    catch(err) {
+      console.log(err);
+    }
+    finally {
+      setloading(false);
+    }
     setname("");
     setpass("");
   }
 
   return (
-
+    loading?<FullScreenLoader/>:
     <div className='min-h-screen w-full bg-[#eff2f1] flex justify-center items-center px-4'>
 
       <div className='main bg-[#3ab299] flex flex-col lg:flex-row justify-between w-full max-w-5xl rounded-3xl overflow-hidden'>
