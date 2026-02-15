@@ -1,11 +1,12 @@
 "use client"
 import React, { useState } from 'react'
-
+import FullScreenLoader from '../components/FullScreenLoader';
 const Register = () => {
   const [name, setname] = useState("");
   const [pass, setpass] = useState("")
   const [pass2, setpass2] = useState("")
   const [mail, setmail] = useState("");
+  const [loading, setloading] = useState(false)
 
   const handleName = (event) => {
     setname(event.target.value);
@@ -24,12 +25,19 @@ const Register = () => {
   }
 
   const HandleApi = async () => {
+    try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, pass, mail })
     });
-
+  }
+  catch(err) {
+    console.log(err);
+  }
+  finally {
+    setloading(false);
+  }
     setname("");
     setmail("");
     setpass("");
@@ -42,6 +50,7 @@ const Register = () => {
   }
 
   const handleSubmit = async (event) => {
+    setloading(true);
     event.preventDefault();
     let pass_error = document.getElementById("pass-error");
 
@@ -56,7 +65,7 @@ const Register = () => {
   }
 
   return (
-
+    loading?<FullScreenLoader/>:
     <div className='min-h-screen w-full bg-[#eff2f1] flex justify-center items-center px-4'>
 
       <div className='main bg-[#3ab299] flex flex-col lg:flex-row justify-between w-full max-w-5xl rounded-3xl overflow-hidden'>
