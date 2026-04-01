@@ -1,50 +1,36 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import FullScreenLoader from '../components/FullScreenLoader';
-
 const Login = () => {
 
   const [name, setname] = useState("");
   const [loading, setloading] = useState(false)
-  const [backendReady,setBackendReady] = useState(false)
   const [pass, setpass] = useState("")
+  const [backendReady,setBackendReady] = useState(false);
+useEffect(()=>{
+const checkBackend = async()=>{
+try{
+const res = await fetch(
+`${process.env.NEXT_PUBLIC_API_URL}/`,
+{
+method:"GET",
+credentials:"include"
+}
+);
+const data = await res.json();
+if(data.isDefault){
+setBackendReady(true);
+}
+}
+catch{
+  console.log("Backend not ready for this!");
+}
+}
+const interval = setInterval(checkBackend,3000);
 
-
-  useEffect(()=>{
-
-    const checkBackend = async()=>{
-
-      try{
-
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/`,
-          {
-            method:"GET",
-            credentials:"include"
-          }
-        );
-
-        const data = await res.json();
-
-        if(data.isDefault){
-          setBackendReady(true);
-        }
-
-      }
-      catch{
-        console.log("Backend sleeping...");
-      }
-
-    }
-
-    const interval = setInterval(checkBackend,3000);
-
-    checkBackend();
-
-    return ()=> clearInterval(interval);
-
-  },[])
-
+checkBackend();
+return ()=> clearInterval(interval);
+},[])
   const handleName = (event) => {
     setname(event.target.value);
   }
@@ -60,9 +46,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setloading(true);
-
+    console.log(`${process.env.NEXT_PUBLIC_API_URL}/login`);
     try {
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -75,39 +60,24 @@ const Login = () => {
     if (data.userAuth) {
       window.location.href = "/home";
     }
-
-    else {
-
+    else if (!data.userAuth) {
       let pass_error = document.querySelector("#pass-error");
-      pass_error.textContent =
-      "either username or password is wrong";
-
+      pass_error.textContent = "either username or password is wrong";
     }
-
     }
-
-    catch(err){
+    catch(err) {
       console.log(err);
     }
-
-    finally{
+    finally {
       setloading(false);
     }
-
     setname("");
     setpass("");
   }
 
-
-  if(loading || !backendReady){
-    return <FullScreenLoader/>
-  }
-
   return (
-
+    (loading || !backendReady)?<FullScreenLoader/>:
     <div className='min-h-screen w-full bg-[#eff2f1] flex justify-center items-center px-4'>
-
-      {/* YOUR UI UNCHANGED */}
 
       <div className='main bg-[#3ab299] flex flex-col lg:flex-row justify-between w-full max-w-5xl rounded-3xl overflow-hidden'>
 
@@ -132,14 +102,55 @@ const Login = () => {
 
         </div>
 
-        {/* rest unchanged */}
+        <div className='bg-white w-full min-h-120 lg:w-[60%] p-6 sm:p-10'>
+
+          <h1 className='text-[#3ab299] font-bold text-2xl sm:text-4xl text-center mt-6 sm:mt-10'>
+            Login To Your Account
+          </h1>
+
+          <span className='text-red-500 block text-center mt-2' id='pass-error'></span>
+
+          <form onSubmit={handleLogin}>
+
+            <div className='flex flex-col items-center mt-10 gap-4 w-full'>
+
+              <input
+                type="text"
+                onChange={handleName}
+                name='name'
+                required
+                placeholder='Name'
+                className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
+              />
+
+              <input
+                type="password"
+                onChange={handlepassword}
+                name='pass'
+                required
+                placeholder='Password'
+                className='bg-[#eff2f1] rounded-md outline-none px-3 py-2 h-12 w-full sm:w-[80%]'
+              />
+
+            </div>
+
+            <div className='flex justify-center'>
+              <button
+                type='submit'
+                className='cursor-pointer mt-8 bg-[#3ab299] py-2 px-10 text-white rounded-full'
+              >
+                Login
+              </button>
+            </div>
+
+          </form>
+
+        </div>
 
       </div>
 
     </div>
-
   )
-
 }
 
 export default Login
