@@ -1,35 +1,12 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import FullScreenLoader from '../components/FullScreenLoader';
 const Login = () => {
+
   const [name, setname] = useState("");
   const [loading, setloading] = useState(false)
   const [pass, setpass] = useState("")
-  const [backendReady,setBackendReady] = useState(false);
-useEffect(()=>{
-const checkBackend = async()=>{
-try{
-const res = await fetch(
-`${process.env.NEXT_PUBLIC_API_URL}/`,
-{
-method:"GET",
-credentials:"include"
-}
-);
-const data = await res.json();
-if(data.isDefault){
-setBackendReady(true);
-}
-}
-catch{
-  console.log("Backend not ready for this!");
-}
-}
-const interval = setInterval(checkBackend,3000);
 
-checkBackend();
-return ()=> clearInterval(interval);
-},[])
   const handleName = (event) => {
     setname(event.target.value);
   }
@@ -75,7 +52,7 @@ return ()=> clearInterval(interval);
   }
 
   return (
-    (loading || !backendReady)?<FullScreenLoader/>:
+    loading?<FullScreenLoader/>:
     <div className='min-h-screen w-full bg-[#eff2f1] flex justify-center items-center px-4'>
 
       <div className='main bg-[#3ab299] flex flex-col lg:flex-row justify-between w-full max-w-5xl rounded-3xl overflow-hidden'>
