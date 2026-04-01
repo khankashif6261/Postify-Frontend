@@ -1,8 +1,7 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FullScreenLoader from '../components/FullScreenLoader';
 const Login = () => {
-
   const [name, setname] = useState("");
   const [loading, setloading] = useState(false)
   const [pass, setpass] = useState("")
